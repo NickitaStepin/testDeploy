@@ -95,6 +95,92 @@ function App() {
             <p>Репозиторий: GitHub</p>
           </div>
         </div>
+
+        <div className="card test-buttons-card">
+          <h2>🧪 Тестовые кнопки (с ошибками)</h2>
+          <p className="warning-text">⚠️ Эти кнопки специально не работают для тестирования</p>
+          
+          <div className="test-buttons">
+            <button 
+              className="broken-btn error-btn"
+              onClick={() => {
+                try {
+                  // Вызывает JavaScript ошибку
+                  throw new Error('Тестовая ошибка: кнопка не работает!')
+                } catch (error) {
+                  console.error('Ошибка из тестовой кнопки:', error)
+                  alert('Ошибка: ' + error.message)
+                }
+              }}
+            >
+              Кнопка с ошибкой (Error)
+            </button>
+
+            <button 
+              className="broken-btn undefined-btn"
+              onClick={() => {
+                try {
+                  // Попытка вызвать undefined функцию
+                  undefinedFunction()
+                } catch (error) {
+                  console.error('Ошибка: функция не определена', error)
+                  alert('Ошибка: функция undefinedFunction не определена')
+                }
+              }}
+            >
+              Кнопка с undefined функцией
+            </button>
+
+            <button 
+              className="broken-btn null-btn"
+              onClick={() => {
+                try {
+                  // Попытка обратиться к null
+                  const element = null
+                  element.someMethod()
+                } catch (error) {
+                  console.error('Ошибка: обращение к null', error)
+                  alert('Ошибка: Cannot read property of null')
+                }
+              }}
+            >
+              Кнопка с null reference
+            </button>
+
+            <button 
+              className="broken-btn type-error-btn"
+              onClick={() => {
+                try {
+                  // TypeError: попытка вызвать метод у undefined
+                  const obj = undefined
+                  obj.method()
+                } catch (error) {
+                  console.error('Ошибка: TypeError', error)
+                  alert('Ошибка: Cannot read property "method" of undefined')
+                }
+              }}
+            >
+              Кнопка с TypeError
+            </button>
+
+            <button 
+              className="broken-btn async-error-btn"
+              onClick={async () => {
+                try {
+                  // Асинхронная ошибка
+                  await new Promise((resolve, reject) => {
+                    setTimeout(() => reject(new Error('Асинхронная ошибка')), 100)
+                  })
+                } catch (error) {
+                  console.error('Ошибка: асинхронная ошибка', error)
+                  alert('Ошибка: ' + error.message)
+                }
+              }}
+            >
+              Кнопка с async ошибкой
+            </button>
+          </div>
+        </div>
       </main>
 
       <footer className="app-footer">

@@ -257,6 +257,95 @@
   font-size: 1rem;
 }
 
+.test-buttons-card {
+  max-width: 500px;
+}
+
+.warning-text {
+  color: #ff6b6b;
+  font-size: 0.9rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  padding: 0.5rem;
+  background: #fff3cd;
+  border-radius: 6px;
+  border-left: 4px solid #ffc107;
+}
+
+.test-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.broken-btn {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  border: 2px solid #ff6b6b;
+  border-radius: 8px;
+  background: #fff;
+  color: #ff6b6b;
+  cursor: pointer;
+  transition: all 0.3s;
+  font-weight: 500;
+  text-align: left;
+}
+
+.broken-btn:hover {
+  background: #ffe0e0;
+  transform: translateX(5px);
+}
+
+.broken-btn:active {
+  transform: translateX(2px);
+}
+
+.error-btn {
+  border-color: #dc3545;
+  color: #dc3545;
+}
+
+.error-btn:hover {
+  background: #f8d7da;
+}
+
+.undefined-btn {
+  border-color: #ff9800;
+  color: #ff9800;
+}
+
+.undefined-btn:hover {
+  background: #fff3e0;
+}
+
+.null-btn {
+  border-color: #9c27b0;
+  color: #9c27b0;
+}
+
+.null-btn:hover {
+  background: #f3e5f5;
+}
+
+.type-error-btn {
+  border-color: #e91e63;
+  color: #e91e63;
+}
+
+.type-error-btn:hover {
+  background: #fce4ec;
+}
+
+.async-error-btn {
+  border-color: #00bcd4;
+  color: #00bcd4;
+}
+
+.async-error-btn:hover {
+  background: #e0f7fa;
+}
+
 @media (max-width: 768px) {
   .app-main {
     flex-direction: column;
