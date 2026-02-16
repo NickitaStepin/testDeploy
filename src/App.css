@@ -346,6 +346,24 @@
   background: #e0f7fa;
 }
 
+.console-error-btn {
+  border-color: #795548;
+  color: #795548;
+}
+
+.console-error-btn:hover {
+  background: #efebe9;
+}
+
+.async-throw-btn {
+  border-color: #607d8b;
+  color: #607d8b;
+}
+
+.async-throw-btn:hover {
+  background: #eceff1;
+}
+
 @media (max-width: 768px) {
   .app-main {
     flex-direction: column;

@@ -104,80 +104,73 @@ function App() {
             <button 
               className="broken-btn error-btn"
               onClick={() => {
-                try {
-                  // Вызывает JavaScript ошибку
-                  throw new Error('Тестовая ошибка: кнопка не работает!')
-                } catch (error) {
-                  console.error('Ошибка из тестовой кнопки:', error)
-                  alert('Ошибка: ' + error.message)
-                }
+                // ✅ Uncaught Exception - перехватывается автоматически
+                throw new Error('Тестовая ошибка: кнопка не работает!')
               }}
             >
-              Кнопка с ошибкой (Error)
+              Кнопка с ошибкой (Uncaught Error)
             </button>
 
             <button 
               className="broken-btn undefined-btn"
               onClick={() => {
-                try {
-                  // Попытка вызвать undefined функцию
-                  undefinedFunction()
-                } catch (error) {
-                  console.error('Ошибка: функция не определена', error)
-                  alert('Ошибка: функция undefinedFunction не определена')
-                }
+                // ✅ ReferenceError - перехватывается автоматически
+                undefinedFunction() // ReferenceError: undefinedFunction is not defined
               }}
             >
-              Кнопка с undefined функцией
+              Кнопка с ReferenceError
             </button>
 
             <button 
               className="broken-btn null-btn"
               onClick={() => {
-                try {
-                  // Попытка обратиться к null
-                  const element = null
-                  element.someMethod()
-                } catch (error) {
-                  console.error('Ошибка: обращение к null', error)
-                  alert('Ошибка: Cannot read property of null')
-                }
+                // ✅ TypeError - перехватывается автоматически
+                const element = null
+                element.someMethod() // TypeError: Cannot read properties of null
               }}
             >
-              Кнопка с null reference
+              Кнопка с TypeError (null)
             </button>
 
             <button 
               className="broken-btn type-error-btn"
               onClick={() => {
-                try {
-                  // TypeError: попытка вызвать метод у undefined
-                  const obj = undefined
-                  obj.method()
-                } catch (error) {
-                  console.error('Ошибка: TypeError', error)
-                  alert('Ошибка: Cannot read property "method" of undefined')
-                }
+                // ✅ TypeError - перехватывается автоматически
+                const obj = undefined
+                obj.method() // TypeError: Cannot read properties of undefined
               }}
             >
-              Кнопка с TypeError
+              Кнопка с TypeError (undefined)
             </button>
 
             <button 
               className="broken-btn async-error-btn"
-              onClick={async () => {
-                try {
-                  // Асинхронная ошибка
-                  await new Promise((resolve, reject) => {
-                    setTimeout(() => reject(new Error('Асинхронная ошибка')), 100)
-                  })
-                } catch (error) {
-                  console.error('Ошибка: асинхронная ошибка', error)
-                  alert('Ошибка: ' + error.message)
-                }
+              onClick={() => {
+                // ✅ Unhandled Promise Rejection - перехватывается автоматически
+                Promise.reject(new Error('Ошибка: необработанное отклонение промиса'))
               }}
             >
-              Кнопка с async ошибкой
+              Кнопка с Unhandled Rejection
+            </button>
+
+            <button 
+              className="broken-btn console-error-btn"
+              onClick={() => {
+                // ✅ Console.error с правильным форматом и ключевыми словами
+                console.error('Ошибка из тестовой кнопки: Error: Тестовая ошибка: кнопка не работает!')
+              }}
+            >
+              Кнопка с console.error
+            </button>
+
+            <button 
+              className="broken-btn async-throw-btn"
+              onClick={async () => {
+                // ✅ Async функция без await - unhandled rejection
+                throw new Error('Ошибка: необработанная ошибка в async функции')
+              }}
+            >
+              Кнопка с async throw
             </button>
           </div>
         </div>
